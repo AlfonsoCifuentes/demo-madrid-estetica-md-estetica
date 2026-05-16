@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Estética · Clínica de Medicina Estética en Madrid</title>
+<meta name="description" content="Clínica de medicina estética en Madrid. Tratamientos faciales, corporales y láser con resultados visibles. Reserva tu consulta gratuita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --negro: #1A1A1A;
+    --dorado: #C9A84C;
+    --crema: #FAF8F5;
+    --gris: #6B6B6B;
+    --gris-claro: #E8E4DC;
+    --blanco: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--negro);
+    background: var(--crema);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26,26,26,0.95);
+    backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--dorado);
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--dorado); }
+  .nav-cta {
+    background: var(--dorado);
+    color: var(--negro) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+  .nav-cta:hover { background: #b8943e !important; color: var(--negro) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=80&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center 30%;
+    filter: brightness(0.35);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    padding: 6rem 2rem 4rem;
+    margin-left: 8vw;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 1.5rem;
+    border-left: 2px solid var(--dorado);
+    padding-left: 0.8rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--blanco);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--dorado);
+  }
+  .hero p {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--negro);
+    padding: 0.9rem 2rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    border-radius: 2px;
+  }
+  .btn-primary:hover { background: #b8943e; transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: var(--blanco);
+    padding: 0.9rem 2rem;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: border-color 0.3s, background 0.3s;
+    border-radius: 2px;
+  }
+  .btn-secondary:hover { border-color: var(--dorado); background: rgba(201,168,76,0.1); }
+
+  /* STRIP */
+  .strip {
+    background: var(--negro);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .strip-item {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .strip-item svg { opacity: 0.6; }
+
+  /* SECTION BASE */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.2;
+    color: var(--negro);
+    margin-bottom: 1.5rem;
+  }
+  .section-subtitle {
+    color: var(--gris);
+    font-weight: 300;
+    font-size: 1.05rem;
+    max-width: 560px;
+  }
+
+  /* INTRO SPLIT */
+  .intro {
+    background: var(--blanco);
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .intro-image {
+    position: relative;
+  }
+  .intro-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+  .intro-image::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 60%;
+    height: 60%;
+    border: 2px solid var(--dorado);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .intro-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gris-claro);
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--dorado);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--gris);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* SERVICES */
+  .services { background: var(--crema); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    margin-top: 3rem;
+    background: var(--gris-claro);
+  }
+  .service-card {
+    background: var(--blanco);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card:hover { background: var(--negro); }
+  .service-card:hover .service-name,
+  .service-card:hover .service-desc { color: var(--blanco); }
+  .service-card:hover .service-icon { color: var(--dorado); }
+  .service-icon {
+    color: var(--negro);
+    margin-bottom: 1.2rem;
+    transition: color 0.3s;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+    color: var(--negro);
+    transition: color 0.3s;
+  }
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--gris);
+    line-height: 1.6;
+    transition: color 0.3s;
+  }
+
+  /* ANTES/DESPUÉS */
+  .gallery { background: var(--negro); }
+  .gallery .section-title { color: var(--blanco); }
+  .gallery .section-label { color: var(--dorado); }
+  .gallery .section-subtitle { color: rgba(255,255,255,0.6); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: grayscale(0.2);
+  }
+  .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0); }
+  .gallery-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: var(--blanco);
+    padding: 1.5rem 1rem 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* PROCESO */
+  .proceso { background: var(--crema); }
+  .proceso-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .proceso-steps::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--gris-claro);
+  }
+  .step {
+    text-align: center;
+    position: relative;
+  }
+  .step-num {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--blanco);
+    border: 2px solid var(--dorado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--dorado);
+    position: relative;
+    z-index: 1;
+  }
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .step-desc { font-size: 0.85rem; color: var(--gris); }
+
+  /* TESTIMONIOS */
+  .testimonios { background: var(--blanco); }
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .testimonio-card {
+    background: var(--crema);
+    padding: 2rem;
+    border-left: 3px solid var(--dorado);
+  }
+  .testimonio-text {
+    font-style: italic;
+    color: var(--gris);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+  }
+  .testimonio-author {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .stars { color: var(--dorado); font-size: 0.85rem; margin-bottom: 0.8rem; }
+
+  /* CTA RESERVA */
+  .reserva {
+    background: var(--negro);
+    text-align: center;
+  }
+  .reserva .section-title { color: var(--blanco); }
+  .reserva p { color: rgba(255,255,255,0.65); font-weight: 300; font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.5rem; }
+
+  /* CONTACTO */
+  .contacto { background: var(--crema); }
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contacto-info { }
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .info-icon { color: var(--dorado); flex-shrink: 0; margin-top: 2px; }
+  .info-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); margin-bottom: 0.2rem; }
+  .info-value { font-size: 0.95rem; color: var(--negro); }
+  .contacto-form { }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); display: block; margin-bottom: 0.4rem; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--blanco);
+    border: 1px solid var(--gris-claro);
+    padding: 0.8rem 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: var(--negro);
+    outline: none;
+    transition: border-color 0.3s;
+    border-radius: 2px;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--dorado); }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .btn-form {
+    width: 100%;
+    background: var(--dorado);
+    color: var(--negro);
+    border: none;
+    padding: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 2px;
+  }
+  .btn-form:hover { background: #b8943e; }
+
+  /* FOOTER */
+  footer {
+    background: var(--negro);
+    color: rgba(255,255,255,0.5);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+  }
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--dorado);
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-content { margin-left: 0; padding: 5rem 1.5rem 3rem; }
+    .btn-secondary { display: none; }
+    .intro-grid,
+    .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .intro-image::after { display: none; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .proceso-steps { grid-template-columns: 1fr 1fr; }
+    .proceso-steps::before { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MD Estética</a>
+  <ul class="nav-links">
+    <li><a href="#tratamientos">Tratamientos</a></li>
+    <li><a href="#galeria">Resultados</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto" class="nav-cta">Reservar Cita</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Medicina Estética · Madrid O'Donnell</span>
+    <h1>Tu mejor versión,<br><em>con precisión clínica</em></h1>
+    <p>Tratamientos faciales y corporales personalizados con tecnología de última generación y resultados que duran.</p>
+    <a href="#contacto" class="btn-primary">Consulta Gratuita</a>
+    <a href="#galeria" class="btn-secondary">Ver Resultados</a>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    Médicos especializados
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Resultados desde la 1ª sesión
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Tratamientos certificados CE
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    +2.000 pacientes satisfechas
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro" id="nosotros">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-image">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&q=80&auto=format&fit=crop" alt="Clínica MD Estética">
+      </div>
+      <div class="intro-text">
+        <span class="section-label">Nuestra Clínica</span>
+        <h2 class="section-title">Estética médica con criterio y experiencia</h2>
+        <p class="section-subtitle">En MD Estética combinamos el conocimiento médico con las técnicas estéticas más avanzadas. Cada tratamiento es diseñado a medida, porque tu rostro y tu cuerpo son únicos.</p>
+        <div class="intro-stats">
+          <div class="stat-item">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Años de experiencia</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Satisfacción</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">30+</span>
+            <span class="stat-label">Tratamientos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services" id="tratamientos">
+  <div class="container">
+    <span class="section-label">Tratamientos</span>
+    <h2 class="section-title">Medicina estética de precisión</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="5"/><path d="M3 21v-1a9 9 0 0 1 18 0v1"/></svg>
+        </div>
+        <h3 class="service-name">Tratamientos Faciales</h3>
+        <p class="service-desc">Rellenos con ácido hialurónico, bótox, mesoterapia y bioestimulación. Rejuvenecimiento natural sin aspecto artificial.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="service-name">Remodelación Corporal</h3>
+        <p class="service-desc">Reducción de grasa localizada, tratamiento de celulitis y flaccidez con tecnología de ultrasonidos y radiofrecuencia.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3 class="service-name">Tratamientos Láser</h3>
+        <p class="service-desc">Depilación definitiva, eliminación de manchas y rejuvenecimiento cutáneo con equipos médicos certificados.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="service-name">Medicina Regenerativa</h3>
+        <p class="service-desc">PRP (plasma rico en plaquetas), vitaminas intravenosas y tratamientos de bioestimulación para recuperar la vitalidad de la piel.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="service-name">Peeling Médico</h3>
+        <p class="service-desc">Renovación celular profunda para mejorar textura, luminosidad y eliminar imperfecciones. Protocolos personalizados.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3 class="service-name">Tratamientos Capilares</h3>
+        <p class="service-desc">PRP capilar, mesoterapia y protocolos para la caída del cabello. Recupera densidad y fortaleza con resultados visibles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA RESULTADOS -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <span class="section-label">Galería de Resultados</span>
+    <h2 class="section-title">Transformaciones reales</h2>
+    <p class="section-subtitle">Resultados de nuestros tratamientos más demandados. Cada caso, un protocolo único.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80&auto=format&fit=crop" alt="Tratamiento facial">
+        <div class="gallery-label">Ácido Hialurónico</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80&auto=format&fit=crop" alt="Hidratación profunda">
+        <div class="gallery-label">Hidratación Profunda</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&q=80&auto=format&fit=crop" alt="Radiofrecuencia">
+        <div class="gallery-label">Radiofrecuencia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="container">
+    <span class="section-label">Cómo funciona</span>
+    <h2 class="section-title">Tu camino hacia los resultados</h2>
+    <div class="proceso-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4 class="step-title">Consulta Gratuita</h4>
+        <p class="step-desc">Analizamos tu piel y escuchamos tus objetivos sin compromiso.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4 class="step-title">Diagnóstico Médico</h4>
+        <p class="step-desc">Diseñamos el protocolo personalizado más adecuado para ti.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4 class="step-title">Tratamiento</h4>
+        <p class="step-desc">Aplicamos las técnicas con la máxima precisión y comodidad.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4 class="step-title">Seguimiento</h4>
+        <p class="step-desc">Te acompañamos durante todo el proceso para optimizar resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div class="container">
+    <span class="section-label">Opiniones</span>
+    <h2 class="section-title">Lo que dicen nuestras pacientes</h2>
+    <div class="testimonios-grid">
+      <div class="testimonio-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonio-text">"El tratamiento con ácido hialurónico fue exactamente lo que buscaba. Natural, sin aspecto artificial. El resultado superó mis expectativas."</p>
+        <span class="testimonio-author">María G. — Retiro</span>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonio-text">"Vine con mucho miedo al bótox y salí encantada. Muy profesionales y me explicaron todo el proceso. Se nota la diferencia sin parecer 'retocada'."</p>
+        <span class="testimonio-author">Laura P. — Salamanca</span>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonio-text">"Llevo tres meses con el tratamiento corporal y los resultados son increíbles. El equipo es cercano y muy experto. 100% recomendada."</p>
+        <span class="testimonio-author">Ana R. — Arganzuela</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA RESERVA -->
+<section class="reserva">
+  <div class="container">
+    <span class="section-label" style="color:var(--dorado)">Primera visita sin coste</span>
+    <h2 class="section-title">Comienza tu transformación hoy</h2>
+    <p>Agenda tu consulta gratuita. Sin compromiso, con total confidencialidad. Te atendemos en Madrid O'Donnell.</p>
+    <a href="#contacto" class="btn-primary">Reservar Consulta Gratuita</a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <span class="section-label">Contacto</span>
+        <h2 class="section-title">Visítanos en Madrid</h2>
+        <p class="section-subtitle" style="margin-bottom:2.5rem">Estamos en el barrio de O'Donnell / Retiro. Consulta gratuita y sin esperas.</p>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="info-label">Dirección</div>
+            <div class="info-value">C/ O'Donnell, Madrid — Zona Retiro</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 1 3.18 2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 5.55 5.55l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="info-label">Teléfono</div>
+            <div class="info-value">+34 910 000 000</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="info-label">Horario</div>
+            <div class="info-value">Lun–Vie: 10:00–20:00 · Sáb: 10:00–14:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="contacto-form">
+        <form onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" placeholder="+34 000 000 000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label>Tratamiento de interés</label>
+            <select>
+              <option value="">Selecciona un tratamiento</option>
+              <option>Ácido Hialurónico / Rellenos</option>
+              <option>Bótox / Toxina Botulínica</option>
+              <option>Remodelación Corporal</option>
+              <option>Tratamientos Láser</option>
+              <option>Medicina Regenerativa (PRP)</option>
+              <option>Peeling Médico</option>
+              <option>Otro / No lo sé aún</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje (opcional)</label>
+            <textarea placeholder="Cuéntanos qué buscas o cualquier pregunta que tengas..."></textarea>
+          </div>
+          <button type="submit" class="btn-form">Solicitar Consulta Gratuita</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">MD Estética</span>
+  <p>© 2026 MD Estética · Medicina Estética en Madrid · Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
